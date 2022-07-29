@@ -1,6 +1,6 @@
 package com.ratmirdudin.cryptocurrency_watcher.controllers;
 
-import com.ratmirdudin.cryptocurrency_watcher.dto.CoinLoreCryptoDto;
+import com.ratmirdudin.cryptocurrency_watcher.dto.CoinLoreCryptoCurrencyDto;
 import com.ratmirdudin.cryptocurrency_watcher.services.CryptoCurrencyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +25,14 @@ public class CryptoCurrencyController {
     // https://api.coinlore.net/api/ticker/?id=48543
     @GetMapping("/{number}")
     public ResponseEntity<?> getCurrentCryptoCurrencyByNumber(@PathVariable Long number) {
-        CoinLoreCryptoDto body = Objects.requireNonNull(restTemplate
-                .getForEntity("https://api.coinlore.net/api/ticker/?id=" + number, CoinLoreCryptoDto[].class)
+        CoinLoreCryptoCurrencyDto body = Objects.requireNonNull(restTemplate
+                .getForEntity("https://api.coinlore.net/api/ticker/?id=" + number, CoinLoreCryptoCurrencyDto[].class)
                 .getBody())[0];
         return ResponseEntity.ok(body);
+    }
+
+    @GetMapping()
+    public ResponseEntity<?> getAllAvailableCryptos() {
+        return ResponseEntity.ok(cryptoCurrencyService.getAllAvailableCryptos());
     }
 }
