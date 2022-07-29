@@ -8,14 +8,18 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cryptocurrency_t")
+@Table(name = "crypto_t")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CryptoCurrency {
+public class Crypto {
 
     @Id
-    @GeneratedValue(generator = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long number;
+
+    private String symbol;
 }
