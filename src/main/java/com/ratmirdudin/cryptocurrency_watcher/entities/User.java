@@ -8,13 +8,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cryptocurrency_t")
+@Table(name = "user_t")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CryptoCurrency {
-
+public class User {
     @Id
     @GeneratedValue(generator = GenerationType.IDENTITY)
     private Long id;
